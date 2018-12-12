@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @date 2017/7/25 10:15
  */
-public class BooleanTypeAdapter extends TypeAdapter<Boolean> {
+class BooleanTypeAdapter extends TypeAdapter<Boolean> {
 
     @Override
     public void write(JsonWriter out, Boolean value) throws IOException {

@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @time 2017/7/25 9:48
  */
-public class FloatTypeAdapter extends TypeAdapter<Float> {
+class FloatTypeAdapter extends TypeAdapter<Float> {
 
     @Override
     public void write(JsonWriter out, Float value) throws IOException {
@@ -25,6 +25,6 @@ public class FloatTypeAdapter extends TypeAdapter<Float> {
             in.nextNull();
             return 0.0f;
         }
-        return StringUtils.parseFloat(in.nextString(), 0.0f);
+        return Utils.parseFloat(in.nextString(), 0.0f);
     }
 }

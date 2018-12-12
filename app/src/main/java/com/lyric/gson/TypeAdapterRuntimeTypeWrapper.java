@@ -15,7 +15,7 @@ import java.lang.reflect.TypeVariable;
  * @author ganyu
  * @time 2017/7/10 11:47
  */
-public final class TypeAdapterRuntimeTypeWrapper<T> extends TypeAdapter<T> {
+final class TypeAdapterRuntimeTypeWrapper<T> extends TypeAdapter<T> {
     private final Gson context;
     private final TypeAdapter<T> delegate;
     private final Type type;

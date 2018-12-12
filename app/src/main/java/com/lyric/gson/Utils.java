@@ -7,7 +7,7 @@ import android.text.TextUtils;
  * @author ganyu
  * @date 2015-07-28
  */
-public class StringUtils {
+class Utils {
     public static final String EMPTY = "";
 
     /**

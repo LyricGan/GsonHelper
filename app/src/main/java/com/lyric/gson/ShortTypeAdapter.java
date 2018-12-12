@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author ganyu
  * @date 2017/7/25 10:21
  */
-public class ShortTypeAdapter extends TypeAdapter<Short> {
+class ShortTypeAdapter extends TypeAdapter<Short> {
 
     @Override
     public void write(JsonWriter out, Short value) throws IOException {
@@ -24,6 +24,6 @@ public class ShortTypeAdapter extends TypeAdapter<Short> {
             in.nextNull();
             return 0;
         }
-        return StringUtils.parseShort(in.nextString(), (short) 0);
+        return Utils.parseShort(in.nextString(), (short) 0);
     }
 }

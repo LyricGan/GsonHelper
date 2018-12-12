@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @date 2017/7/25 9:55
  */
-public class DoubleTypeAdapter extends TypeAdapter<Double> {
+class DoubleTypeAdapter extends TypeAdapter<Double> {
 
     @Override
     public void write(JsonWriter out, Double value) throws IOException {
@@ -25,6 +25,6 @@ public class DoubleTypeAdapter extends TypeAdapter<Double> {
             in.nextNull();
             return 0.00d;
         }
-        return StringUtils.parseDouble(in.nextString(), 0.00d);
+        return Utils.parseDouble(in.nextString(), 0.00d);
     }
 }

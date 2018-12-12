@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @date 2017/7/25 9:57
  */
-public class LongTypeAdapter extends TypeAdapter<Long> {
+class LongTypeAdapter extends TypeAdapter<Long> {
 
     @Override
     public void write(JsonWriter out, Long value) throws IOException {
@@ -25,6 +25,6 @@ public class LongTypeAdapter extends TypeAdapter<Long> {
             in.nextNull();
             return 0L;
         }
-        return StringUtils.parseLong(in.nextString(), 0L);
+        return Utils.parseLong(in.nextString(), 0L);
     }
 }

@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @time 2017/7/10 12:54
  */
-public class StringTypeAdapter extends TypeAdapter<String> {
+class StringTypeAdapter extends TypeAdapter<String> {
 
     @Override
     public void write(JsonWriter out, String value) throws IOException {
@@ -27,7 +27,7 @@ public class StringTypeAdapter extends TypeAdapter<String> {
     public String read(JsonReader in) throws IOException {
         if (in.peek() == JsonToken.NULL) {
             in.nextNull();
-            return StringUtils.EMPTY;
+            return Utils.EMPTY;
         }
         return in.nextString();
     }

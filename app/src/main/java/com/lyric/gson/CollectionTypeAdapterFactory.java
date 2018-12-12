@@ -1,5 +1,7 @@
 package com.lyric.gson;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
@@ -20,7 +22,7 @@ import java.util.Collection;
  * @author ganyu
  * @time 2017/7/10 11:46
  */
-public final class CollectionTypeAdapterFactory implements TypeAdapterFactory {
+final class CollectionTypeAdapterFactory implements TypeAdapterFactory {
     private final ConstructorConstructor constructorConstructor;
 
     public CollectionTypeAdapterFactory(ConstructorConstructor constructorConstructor) {
@@ -72,7 +74,11 @@ public final class CollectionTypeAdapterFactory implements TypeAdapterFactory {
             in.beginArray();
             while (in.hasNext()) {
                 E instance = elementTypeAdapter.read(in);
-                collection.add(instance);
+                if (instance != null) {
+                    collection.add(instance);
+                } else {
+                    logErrorMessage("read error: json arrays contains null object");
+                }
             }
             in.endArray();
             return collection;
@@ -86,9 +92,18 @@ public final class CollectionTypeAdapterFactory implements TypeAdapterFactory {
             }
             out.beginArray();
             for (E element : collection) {
-                elementTypeAdapter.write(out, element);
+                if (element != null) {
+                    elementTypeAdapter.write(out, element);
+                } else {
+                    logErrorMessage("write error: json arrays contains null object");
+                }
             }
             out.endArray();
         }
+
+        private void logErrorMessage(String message) {
+            Log.e("Gson", message);
+        }
     }
 }
+

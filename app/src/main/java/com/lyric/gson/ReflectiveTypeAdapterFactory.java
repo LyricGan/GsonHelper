@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -35,7 +36,7 @@ import java.util.Map;
  * @author ganyu
  * @date 2017/7/24
  */
-public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
+final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
     private final ConstructorConstructor constructorConstructor;
     private final FieldNamingStrategy fieldNamingPolicy = FieldNamingPolicy.IDENTITY;
     private final Excluder excluder = Excluder.DEFAULT;
@@ -48,7 +49,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
         return excludeField(f, serialize, excluder);
     }
 
-    static boolean excludeField(Field f, boolean serialize, Excluder excluder) {
+    private static boolean excludeField(Field f, boolean serialize, Excluder excluder) {
         return !excluder.excludeClass(f.getType(), serialize) && !excluder.excludeField(f, serialize);
     }
 
@@ -70,9 +71,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
 
         List<String> fieldNames = new ArrayList<String>(alternates.length + 1);
         fieldNames.add(serializedName);
-        for (String alternate : alternates) {
-            fieldNames.add(alternate);
-        }
+        fieldNames.addAll(Arrays.asList(alternates));
         return fieldNames;
     }
 

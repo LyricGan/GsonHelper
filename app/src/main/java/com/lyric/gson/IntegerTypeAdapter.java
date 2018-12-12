@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author ganyu
  * @time 2017/7/10 12:56
  */
-public class IntegerTypeAdapter extends TypeAdapter<Integer> {
+class IntegerTypeAdapter extends TypeAdapter<Integer> {
 
     @Override
     public void write(JsonWriter out, Integer value) throws IOException {
@@ -25,6 +25,6 @@ public class IntegerTypeAdapter extends TypeAdapter<Integer> {
             in.nextNull();
             return 0;
         }
-        return StringUtils.parseInt(in.nextString(), 0);
+        return Utils.parseInt(in.nextString(), 0);
     }
 }
