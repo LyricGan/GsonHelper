@@ -1,2 +1,2 @@
-include ':app_sample'
+include ':app'
 include ':library_gson'
