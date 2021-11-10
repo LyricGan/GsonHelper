@@ -6,7 +6,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "com.lyricgan.gson.sample"
+        applicationId "com.lyricgan.demo.gson"
         minSdkVersion 15
         targetSdkVersion 31
         versionCode 1
