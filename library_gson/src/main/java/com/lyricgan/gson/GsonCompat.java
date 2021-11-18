@@ -34,6 +34,9 @@ import java.util.concurrent.atomic.AtomicLongArray;
 
 public class GsonCompat {
 
+    private GsonCompat() {
+    }
+
     public static Gson build() {
         GsonBuilder builder = new GsonBuilder();
         try {

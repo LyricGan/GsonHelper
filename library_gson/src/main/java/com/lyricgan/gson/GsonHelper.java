@@ -3,6 +3,7 @@ package com.lyricgan.gson;
 import com.google.gson.Gson;
 
 /**
+ * Gson工具类
  * @author Lyric Gan
  */
 public class GsonHelper {
@@ -13,16 +14,20 @@ public class GsonHelper {
     }
 
     private GsonHelper() {
-        if (mGson == null) {
-            mGson = GsonCompat.build();
-        }
     }
 
     public static GsonHelper getInstance() {
         return Holder.INSTANCE;
     }
 
+    public void setGson(Gson gson) {
+        this.mGson = gson;
+    }
+
     public Gson getGson() {
+        if (mGson == null) {
+            mGson = GsonCompat.build();
+        }
         return mGson;
     }
 }

@@ -4,7 +4,6 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import com.lyricgan.gson.Utils;
 
 import java.io.IOException;
 
@@ -27,7 +26,7 @@ public class StringTypeAdapter extends TypeAdapter<String> {
     public String read(JsonReader in) throws IOException {
         if (in.peek() == JsonToken.NULL) {
             in.nextNull();
-            return Utils.EMPTY;
+            return "";
         }
         return in.nextString();
     }

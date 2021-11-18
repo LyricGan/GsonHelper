@@ -1,10 +1,11 @@
 package com.lyricgan.gson.adapter;
 
+import android.text.TextUtils;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import com.lyricgan.gson.Utils;
 
 import java.io.IOException;
 
@@ -25,6 +26,23 @@ public class IntegerTypeAdapter extends TypeAdapter<Integer> {
             in.nextNull();
             return 0;
         }
-        return Utils.parseInt(in.nextString(), 0);
+        return parseInt(in.nextString());
+    }
+
+    private int parseInt(String value) {
+        if (TextUtils.isEmpty(value)) {
+            return 0;
+        }
+        int valueInt = 0;
+        try {
+            valueInt = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            try {
+                valueInt = Double.valueOf(value).intValue();
+            } catch (NumberFormatException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return valueInt;
     }
 }
